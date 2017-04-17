@@ -2,11 +2,14 @@
 import React, { Component } from 'react';
 import { Container, Content, Text } from 'native-base';
 
+import AppHeader from './components/Header';
+
 // create a component
 class App extends Component {
   render() {
     return (
       <Container>
+        <AppHeader />
         <Content>
           <Text>Touch Me</Text>
         </Content>
