@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Container, Content, Text } from 'native-base';
 
 import AppHeader from './components/Header';
+import AppFooter from './components/Footer';
 
 // create a component
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <Content>
           <Text>Touch Me</Text>
         </Content>
+        <AppFooter />
       </Container>
     );
   }
