@@ -1,6 +1,6 @@
 // import liraries
 import React, { Component } from 'react';
-import { Container, Content, Text } from 'native-base';
+import { Container, Content, Icon, InputGroup, Input, Button } from 'native-base';
 
 import AppHeader from './components/Header';
 import AppFooter from './components/Footer';
@@ -12,7 +12,12 @@ class App extends Component {
       <Container>
         <AppHeader />
         <Content>
-          <Text>Touch Me</Text>
+          <InputGroup>
+            <Input placeholder="What your next plan?" />
+            <Button transparent style={{ marginTop: 2 }}>
+              <Icon name="ios-add-circle" style={{ color: '#d71149', fontSize: 30 }} />
+            </Button>
+          </InputGroup>
         </Content>
         <AppFooter />
       </Container>
