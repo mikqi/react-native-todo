@@ -1,7 +1,7 @@
 // import lirariest
 import React, { Component } from 'react';
 import { Switch } from 'react-native';
-import { List, ListItem, Text } from 'native-base';
+import { Left, Right, List, ListItem, Text, Button, Icon } from 'native-base';
 
 const style = {
   text: {
@@ -18,17 +18,28 @@ const style = {
 const TodoLists = props => (
   <List>
     <ListItem>
-      <Switch
-        value={props.isComplete}
-        onValueChange={props.onToggleChange}
-      />
-      <Text
-        style={props.isComplete ?
+      <Left>
+        <Switch
+          value={props.isComplete}
+          onValueChange={props.onToggleChange}
+        />
+        <Text
+          style={props.isComplete ?
         style.completed :
         style.text}
-      >
-        {props.text}
-      </Text>
+        >
+          {props.text}
+        </Text>
+      </Left>
+      <Right>
+        <Button
+          transparent
+          danger
+          onPress={props.onDeleteTodo}
+        >
+          <Icon name="ios-trash-outline" />
+        </Button>
+      </Right>
     </ListItem>
   </List>
   );

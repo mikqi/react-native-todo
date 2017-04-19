@@ -61,6 +61,12 @@ class App extends Component {
     this.setSource(newTodos, newTodos);
   }
 
+  handleDeleteTodo(key) {
+    const newTodos = this.state.todos.filter(todo => todo.key !== key);
+
+    this.setSource(newTodos, newTodos);
+  }
+
   render() {
     return (
       <Container>
@@ -88,6 +94,7 @@ class App extends Component {
               <TodoLists
                 key={key}
                 onToggleChange={complete => this.handleToggleChange(key, complete)}
+                onDeleteTodo={() => this.handleDeleteTodo(key)}
                 {...value}
               />
             )}
