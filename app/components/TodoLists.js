@@ -7,7 +7,10 @@ import { List, ListItem, Text } from 'native-base';
 const TodoLists = props => (
   <List>
     <ListItem>
-      <Switch value={props.isComplete} />
+      <Switch
+        value={props.isComplete}
+        onValueChange={props.onToggleChange}
+      />
       <Text style={{ marginLeft: 10 }}>{props.text}</Text>
     </ListItem>
   </List>

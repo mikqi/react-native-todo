@@ -24,6 +24,7 @@ class App extends Component {
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
+    this.handleToggleChange = this.handleToggleChange.bind(this);
     this.setSource = this.setSource.bind(this);
   }
 
@@ -46,6 +47,18 @@ class App extends Component {
     ];
 
     this.setSource(newTodos, newTodos, { text: '' });
+  }
+
+  handleToggleChange(key, isComplete) {
+    const newTodos = this.state.todos.map((todo) => {
+      if (todo.key !== key) return todo;
+      return {
+        ...todo,
+        isComplete,
+      };
+    });
+
+    this.setSource(newTodos, newTodos);
   }
 
   render() {
@@ -74,6 +87,7 @@ class App extends Component {
             renderRow={({ key, ...value }) => (
               <TodoLists
                 key={key}
+                onToggleChange={complete => this.handleToggleChange(key, complete)}
                 {...value}
               />
             )}
