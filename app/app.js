@@ -53,7 +53,7 @@ class App extends Component {
       },
     ];
 
-    this.setSource(newTodos, newTodos, { text: '' });
+    this.setSource(newTodos, filterTodos(this.state.filter, newTodos), { text: '' });
   }
 
   handleToggleChange(key, isComplete) {
@@ -65,13 +65,13 @@ class App extends Component {
       };
     });
 
-    this.setSource(newTodos, newTodos);
+    this.setSource(newTodos, filterTodos(this.state.filter, newTodos));
   }
 
   handleDeleteTodo(key) {
     const newTodos = this.state.todos.filter(todo => todo.key !== key);
 
-    this.setSource(newTodos, newTodos);
+    this.setSource(newTodos, filterTodos(this.state.filter, newTodos));
   }
 
   handleFilter(filter) {
