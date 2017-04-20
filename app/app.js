@@ -9,6 +9,11 @@ import AppFooter from './components/Footer';
 import TodoLists from './components/TodoLists';
 
 const rowHasChanged = (r1, r2) => r1 !== r2;
+const filterTodos = (filter, todos) => todos.filter((todo) => {
+  if (filter === 'ALL') return true;
+  if (filter === 'COMPLETED') return todo.isComplete;
+  if (filter === 'ACTIVE') return !todo.isComplete;
+});
 
 // create a component
 class App extends Component {
@@ -21,10 +26,12 @@ class App extends Component {
       text: '',
       dataSource: ds.cloneWithRows([]),
       todos: [],
+      filter: 'ALL',
     };
 
     this.handleAddTodo = this.handleAddTodo.bind(this);
     this.handleToggleChange = this.handleToggleChange.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
     this.setSource = this.setSource.bind(this);
   }
 
@@ -67,6 +74,10 @@ class App extends Component {
     this.setSource(newTodos, newTodos);
   }
 
+  handleFilter(filter) {
+    this.setSource(this.state.todos, filterTodos(filter, this.state.todos), { filter });
+  }
+
   render() {
     return (
       <Container>
@@ -100,7 +111,9 @@ class App extends Component {
             )}
           />
         </Content>
-        <AppFooter />
+        <AppFooter
+          onFilter={this.handleFilter}
+        />
       </Container>
     );
   }

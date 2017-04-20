@@ -2,20 +2,17 @@
 import React, { Component } from 'react';
 import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
 
-const AppFooter = () => (
+const AppFooter = props => (
   <Footer>
     <FooterTab>
-      <Button active style={styles.active}>
-        <Icon name="ios-list-outline" style={styles.whiteText} />
+      <Button onPress={() => props.onFilter('ALL')}>
+        <Icon name="ios-list-outline" />
       </Button>
-      <Button>
+      <Button onPress={() => props.onFilter('ACTIVE')}>
+        <Icon name="ios-create-outline" />
+      </Button>
+      <Button onPress={() => props.onFilter('COMPLETED')}>
         <Icon name="ios-done-all-outline" />
-      </Button>
-      <Button>
-        <Icon name="ios-trash-outline" />
-      </Button>
-      <Button>
-        <Icon name="ios-more-outline" />
       </Button>
     </FooterTab>
   </Footer>
