@@ -1,7 +1,7 @@
 // import liraries
 // @flow
 import React, { Component } from 'react';
-import { ListView } from 'react-native';
+import { ListView, Keyboard } from 'react-native';
 import { Container, Content, Icon, InputGroup, Input, Button } from 'native-base';
 
 import AppHeader from './components/Header';
@@ -100,6 +100,7 @@ class App extends Component {
           </InputGroup>
           <ListView
             enableEmptySections
+            onScroll={Keyboard.dismiss()}
             dataSource={this.state.dataSource}
             renderRow={({ key, ...value }) => (
               <TodoLists
