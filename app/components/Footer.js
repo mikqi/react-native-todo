@@ -6,6 +6,9 @@ const AppFooter = props => (
   <Footer>
     <FooterTab>
       <Button onPress={() => props.onFilter('ALL')}>
+        <Text>{props.remainTodos} count</Text>
+      </Button>
+      <Button onPress={() => props.onFilter('ALL')}>
         <Icon name="ios-list-outline" />
       </Button>
       <Button onPress={() => props.onFilter('ACTIVE')}>
