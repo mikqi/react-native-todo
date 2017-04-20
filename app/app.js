@@ -112,6 +112,7 @@ class App extends Component {
           />
         </Content>
         <AppFooter
+          filter={this.state.filter}
           remainTodos={filterTodos('ACTIVE', this.state.todos).length}
           onFilter={this.handleFilter}
         />

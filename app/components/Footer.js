@@ -5,17 +5,35 @@ import { Footer, FooterTab, Button, Icon, Text } from 'native-base';
 const AppFooter = props => (
   <Footer>
     <FooterTab>
-      <Button onPress={() => props.onFilter('ALL')}>
+      <Button>
         <Text>{props.remainTodos} count</Text>
       </Button>
-      <Button onPress={() => props.onFilter('ALL')}>
-        <Icon name="ios-list-outline" />
+      <Button
+        style={props.filter === 'ALL' && styles.active}
+        onPress={() => props.onFilter('ALL')}
+      >
+        <Icon
+          style={props.filter === 'ALL' && styles.whiteText}
+          name="ios-list-outline"
+        />
       </Button>
-      <Button onPress={() => props.onFilter('ACTIVE')}>
-        <Icon name="ios-create-outline" />
+      <Button
+        style={props.filter === 'ACTIVE' && styles.active}
+        onPress={() => props.onFilter('ACTIVE')}
+      >
+        <Icon
+          style={props.filter === 'ACTIVE' && styles.whiteText}
+          name="ios-create-outline"
+        />
       </Button>
-      <Button onPress={() => props.onFilter('COMPLETED')}>
-        <Icon name="ios-done-all-outline" />
+      <Button
+        style={props.filter === 'COMPLETED' && styles.active}
+        onPress={() => props.onFilter('COMPLETED')}
+      >
+        <Icon
+          style={props.filter === 'COMPLETED' && styles.whiteText}
+          name="ios-done-all-outline"
+        />
       </Button>
     </FooterTab>
   </Footer>
