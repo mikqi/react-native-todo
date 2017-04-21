@@ -1,7 +1,7 @@
 // import liraries
 // @flow
 import React, { Component } from 'react';
-import { ListView, Keyboard } from 'react-native';
+import { ListView, AsyncStorage } from 'react-native';
 import { Container, Content, Icon, InputGroup, Input, Button } from 'native-base';
 
 import AppHeader from './components/Header';
@@ -35,12 +35,25 @@ class App extends Component {
     this.setSource = this.setSource.bind(this);
   }
 
+  componentWillMount() {
+    AsyncStorage.getItem('todos').then((json) => {
+      try {
+        const todos = JSON.parse(json);
+        this.setSource(todos, todos);
+      } catch (error) {
+
+      }
+    });
+  }
+
   setSource(todos, todosDataSource, otherState = {}) {
     this.setState({
       todos,
       dataSource: this.state.dataSource.cloneWithRows(todosDataSource),
       ...otherState,
     });
+
+    AsyncStorage.setItem('todos', JSON.stringify(todos));
   }
 
   handleAddTodo() {
@@ -100,7 +113,6 @@ class App extends Component {
           </InputGroup>
           <ListView
             enableEmptySections
-            onScroll={Keyboard.dismiss()}
             dataSource={this.state.dataSource}
             renderRow={({ key, ...value }) => (
               <TodoLists
